@@ -1,0 +1,24 @@
+---
+jobs:
+- name: job-deploy-cf-env
+  public: true
+  serial: true
+  plan:
+  - get: resource-cf-env
+  - put: resource-deploy-cf-env
+
+resources:
+- name: resource-cf-env
+  type: git
+  source:
+    uri: https://github.com/cloudfoundry-community/cf-env.git
+
+- name: resource-deploy-cf-env
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true

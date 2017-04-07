@@ -1,0 +1,4 @@
+---
+applications:
+- name: static-web
+  memory: 128M
