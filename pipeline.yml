@@ -3,15 +3,18 @@ jobs:
 - name: job-deploy-cf-env
   public: true
   serial: true
+  trigger: true
   plan:
   - get: resource-cf-env
   - put: resource-deploy-cf-env
+    params:
+      manifest: /resource-cf-env/manifest.yml
 
 resources:
 - name: resource-cf-env
   type: git
   source:
-    uri: https://github.com/cloudfoundry-community/cf-env.git
+    uri: {{git-repo}}
 
 - name: resource-deploy-cf-env
   type: cf

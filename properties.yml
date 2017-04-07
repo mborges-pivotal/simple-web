@@ -1,8 +1,8 @@
-###############
-# PCF
-###############
-# All application current target to the same space
-cf-api: https://api.gcp.borgescloud.com
+# where is your app?
+git-repo: https://github.com/mborges-pivotal/simple-web.git
+
+# where you want to deploy?
+cf-api: https://api.system.gcp.borgescloud.com
 cf-username: mborges@pivotal.io
 cf-organization: mborges-org
 cf-skip-ssl: true
