@@ -1,22 +1,22 @@
 ---
 jobs:
-- name: job-deploy-cf-env
+- name: deploy-web-app
   public: true
   serial: true
-  trigger: true
   plan:
-  - get: resource-cf-env
-  - put: resource-deploy-cf-env
+  - get: code
+    trigger: true
+  - put: cf
     params:
-      manifest: /resource-cf-env/manifest.yml
+      manifest: /code/manifest.yml
 
 resources:
-- name: resource-cf-env
+- name: code
   type: git
   source:
     uri: {{git-repo}}
 
-- name: resource-deploy-cf-env
+- name: cf
   type: cf
   source:
     api: {{cf-api}}
